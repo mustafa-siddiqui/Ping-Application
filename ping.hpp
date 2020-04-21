@@ -63,7 +63,7 @@ pingPacket initializePacket(int& transmitted);
  *          Report RTT (Round Trip Time) & Packet Loss OR errors encountered during 
  *          transmission (if any).
  */
-void sendPing(int socketFD, int& transmitted, timespec& startTime, timespec& endTime, sockaddr_in* pingAddress, std::string ipString);
+int sendPing(int socketFD, int& transmitted, timespec& startTime, timespec& endTime, sockaddr_in* pingAddress, std::string ipString);
 
 
 #endif
