@@ -17,7 +17,6 @@
 #include <netinet/ip.h>         // for n_short and n_time for use in netinet/ip_icmp.h
 #include <netinet/ip_icmp.h>    // icmp struct
 #include <unistd.h>             // getpid()
-#include <fcntl.h>              // fcntl()
 // -- //
 #include <string>               
 #include <iostream>
