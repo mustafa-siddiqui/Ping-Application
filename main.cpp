@@ -90,8 +90,12 @@ int main(int argc, char* argv[]) {
 
     for (;;) {              // ping in infinite loop
 
-        sendPing(socketFD, transmitted, startTime, endTime, pingAddress, ipString);
+        int flag = sendPing(socketFD, transmitted, startTime, endTime, pingAddress, ipString);
         std::cout << std::endl;
+        if (flag != -1) {   // ping successful
+            /* add time delay = 0.05 sec */
+            usleep(50000);
+        }
     }
 
     close(socketFD);        // close socket        
