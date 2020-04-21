@@ -9,6 +9,7 @@
 #include <time.h>
 // -- //
 #include <string>
+#include <cstring>
 #include <iostream>
 #include <stdlib.h>
 #include <netinet/ip.h>         // for n_short and n_time for use in netinet/ip_icmp.h
