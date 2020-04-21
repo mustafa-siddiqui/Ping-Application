@@ -69,7 +69,7 @@ pingPacket initializePacket(int& transmitted) {
 }
 
 /* send ECHO REQUEST and receive ECHO REPLY */
-void sendPing(int socketFD, int& transmitted, timespec& startTime, timespec& endTime, sockaddr_in* pingAddress, std::string ipString) {
+int sendPing(int socketFD, int& transmitted, timespec& startTime, timespec& endTime, sockaddr_in* pingAddress, std::string ipString) {
     
     /* send ping */
     pingPacket packet = initializePacket(transmitted);
@@ -78,6 +78,7 @@ void sendPing(int socketFD, int& transmitted, timespec& startTime, timespec& end
     //std::cout << "Packet message: " << packet.message << '\n';
     clock_gettime(CLOCK_MONOTONIC, &startTime);     // get start time
     
+    int pingBytesReceived = 0;
     int pingBytesSent = sendto(socketFD, (char*)&packet, PACKET_SIZE, 0, (sockaddr*)pingAddress, sizeof(sockaddr));
     if (pingBytesSent == -1) {
         std::cout << "Packet Sending Failed.\n";
@@ -91,7 +92,7 @@ void sendPing(int socketFD, int& transmitted, timespec& startTime, timespec& end
         int received = 0;
         u_char receivedPacket;
 
-        int pingBytesReceived = recvfrom(socketFD, &receivedPacket, sizeof(receivedPacket), 0, &rAddress, &addrLength);
+        pingBytesReceived = recvfrom(socketFD, &receivedPacket, sizeof(receivedPacket), 0, &rAddress, &addrLength);
         if (pingBytesReceived == -1) {
             std::cout << "Packet Receival Failed.\n";
             std::cout << "Error Code: " << errno << '\n';
@@ -118,6 +119,8 @@ void sendPing(int socketFD, int& transmitted, timespec& startTime, timespec& end
             }
         }
     }
+
+    return pingBytesReceived;
 }
 
 #endif
