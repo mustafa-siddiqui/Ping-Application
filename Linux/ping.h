@@ -48,7 +48,10 @@ int getIPAddress(char* hostName, addrinfo* &result);
 PacketData initializePacket(int &transmitted);
 
 /** @fn     sendPing()
- *  @brief
+ *  @brief  Function to send an ICMP echo request and receive an echo reply. Makes use of the
+ *          initializePacket() function to create a packet and sends to the address pointed to
+ *          by pDestinationAddr (a pointer). Displays RTT (Round Trip Time in milliseconds)
+ *          and packet success percentage after every ping.
  */
 int sendPing(int socketFD, int &transmitted, sockaddr_in* pDestinationAddr, int &success, int &failure);
 
