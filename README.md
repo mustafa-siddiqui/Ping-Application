@@ -20,3 +20,4 @@ Displays:
 
 #### Resources Consulted:
 - [Beej's Guide to Network Programming](https://beej.us/guide/bgnet/html/)
+- [Deconstructing Ping with C and NodeJS by David Gatti](https://github.com/davidgatti/How-to-Deconstruct-Ping-with-C-and-NodeJS)
