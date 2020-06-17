@@ -15,8 +15,8 @@ Displays:
 - Error Number if encountered
 
 #### Issues:
-- The macOS version get the error code 65 (errno 65): no route to host.
-- The Linux version fails to receive anything before it times out and restarts the process.
+- The macOS version gets the error code 65 (errno 65): no route to host.
+- The Linux version fails to receive anything before it times out (errno 35) and restarts the process.
 
 #### Resources Consulted:
 - [Beej's Guide to Network Programming](https://beej.us/guide/bgnet/html/)
