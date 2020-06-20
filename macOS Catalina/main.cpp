@@ -37,7 +37,6 @@ int main(int argc, char* argv[]) {
         return 1;
     }
     else {
-        
         pingAddress = (sockaddr_in*)result->ai_addr;                        // get struct from resulting link list
         void* address;
         address = &pingAddress->sin_addr;                                   // store ip address
@@ -51,11 +50,9 @@ int main(int argc, char* argv[]) {
         close(socketFD);
         return 1;
     }
-    
     else {
         std::cout << "Socket File Descriptor Received: " << socketFD << std::endl;
     }
-    
 
     int transmitted = 0;
     timespec startTime, endTime;
@@ -68,23 +65,19 @@ int main(int argc, char* argv[]) {
         std::cout << "Setting Socket Options Failed.\n";
         exit(EXIT_FAILURE);
     }
-    
     else {  // for debugging purposes
         std::cout << "Socket Option Set to TTL!\n";
     }
     
-
     /* set timeout of receival */
     if (setsockopt(socketFD, SOL_SOCKET, SO_RCVTIMEO, (const char*)&tvOut, sizeof(tvOut)) != 0) {
         std::cout << "Setting Timeout for Receival Failed.\n";
         exit(EXIT_FAILURE);
     }
-    
     else {  // for debugging purposes
         std::cout << "Time of RECV set\n";
     }
     
-
     //free(result);       
     freeaddrinfo(result);   // free linked list before infinite loop
 
